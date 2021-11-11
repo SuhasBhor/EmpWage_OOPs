@@ -4,8 +4,8 @@ import java.util.Random;
 public class Employee {
 	public static void main(String[] args) {
 		int ratePerHour=20,empHrs=0,totalWorkingHrs=0,salary=0;
-		int i,workingDays=20;
-		for(i=1;i<=workingDays;i++) {
+		int workingDays=20,workingHours=100,day=1;
+		while( day <= workingDays && totalWorkingHrs <= workingHours ) {
 			Random rd = new Random();
 			int empcheck = rd.nextInt(3);
 			switch(empcheck) {
@@ -17,12 +17,13 @@ public class Employee {
 					break;
 				default:
 					System.out.println(empHrs=0);
-			}
+				}
+			day++;
 			System.out.println(totalWorkingHrs=totalWorkingHrs + empHrs);
 		}
 		System.out.println("Total Working Hour:" +totalWorkingHrs);
-		System.out.println("Total Salary:");
-		System.out.println(salary=totalWorkingHrs * ratePerHour);
+		System.out.print("Total Salary:");
+		System.out.print(salary=totalWorkingHrs * ratePerHour);
 	}
 }
 
