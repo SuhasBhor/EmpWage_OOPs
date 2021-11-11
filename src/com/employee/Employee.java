@@ -2,28 +2,36 @@ package com.employee;
 
 import java.util.Random;
 public class Employee {
-	public static void main(String[] args) {
-		int ratePerHour=20,empHrs=0,totalWorkingHrs=0,salary=0;
-		int workingDays=20,workingHours=100,day=1;
-		while( day <= workingDays && totalWorkingHrs <= workingHours ) {
-			Random rd = new Random();
-			int empcheck = rd.nextInt(3);
-			switch(empcheck) {
-				case 1:
-					System.out.println(empHrs=8);
-					break;
-				case 2:
-					System.out.println(empHrs=4);
-					break;
+	public static final int Is_Part = 1;
+	public static final int Is_Full = 2;
+	public static final int Emp_Rate = 20;
+	public static final int Emp_Max_Hours = 100;
+	public static final int No_Of_Working_Days = 21;
+	
+	public int computeEmpWage() {
+		int empHrs = 0;
+		int totalHrsInMonth = 0;
+		int totalWorkingDaysInMonth = 0;
+		
+		while(totalHrsInMonth <= Emp_Max_Hours && totalWorkingDaysInMonth <= No_Of_Working_Days) {
+			Random rand = new Random();
+			int empStatus = rand.nextInt(2)+1;
+			switch(empStatus) {
+			case Is_Part:
+				empHrs = 4;
+				break;
+			case Is_Full:
+				empHrs = 8;
+				break;
 				default:
-					System.out.println(empHrs=0);
-				}
-			day++;
-			System.out.println(totalWorkingHrs=totalWorkingHrs + empHrs);
+					empHrs = 0;
+			}
+			totalHrsInMonth += empHrs;
 		}
-		System.out.println("Total Working Hour:" +totalWorkingHrs);
-		System.out.print("Total Salary:");
-		System.out.print(salary=totalWorkingHrs * ratePerHour);
+		int totalWage = totalHrsInMonth * Emp_Rate;
+		System.out.println("Total EmpWage For a Month is : "+totalWage);
+		return totalWage;
+		
 	}
 }
 
