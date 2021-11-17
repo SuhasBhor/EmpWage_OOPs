@@ -1,28 +1,14 @@
 package com.employee;
 
 import java.util.Random;
-public class Employee {
+
+public class Employee implements EmpWageBuilder{
     int numberOfCompany = 0;
 	final int isFullTime = 2;
     final int isPartTime = 1;
     int totalEmpWage;
-    
-    CompanyEmpWage [] companyEmpWage = new CompanyEmpWage[5];
-    
-    public void addCompany(String name, int Total_Working_Days, int Max_Working_Hours, int Emp_Rate) {
-    	companyEmpWage[numberOfCompany] = new CompanyEmpWage(name, Total_Working_Days, Max_Working_Hours, Emp_Rate);
-    	numberOfCompany++;
-    }
-    
-    public void computeEmpWage() {
-    	for (int i = 0; i < numberOfCompany; i++) {
-			companyEmpWage[i].setTotal_Emp_Wage(this.computeEmpWage(companyEmpWage[i]));
-			System.out.println(companyEmpWage[i]);
-		}
-    }
-    
-
-    public int computeEmpWage(CompanyEmpWage companyEmpWage) {
+  
+    public void computeEmpWage(CompanyEmpWage companyEmpWage) {
       int empHrs = 0;
       int empWage = 0;
       int totalEmpHrs = 0;
@@ -43,8 +29,8 @@ public class Employee {
             }
          totalEmpHrs += empHrs;
         }
-      totalEmpWage = totalEmpHrs * companyEmpWage.Emp_Rate;
-      return totalEmpWage;
+      companyEmpWage.setTotal_Emp_Wage(totalEmpHrs* companyEmpWage.Emp_Rate);
+      System.out.println("Employee Monthly Wage of Company "+companyEmpWage.name+ " is "+companyEmpWage.Total_Emp_Wage);
    }
 }
 
