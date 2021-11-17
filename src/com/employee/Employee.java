@@ -2,15 +2,12 @@ package com.employee;
 
 import java.util.Random;
 public class Employee {
-	/*Constant Variables.*/
     final int isFullTime = 2;
     final int isPartTime = 1;
-    
     final String company_name;
     final int totalWorkDays;
     final int maxHrsPMonth; 
     final int empRatePHr;
-    
     int totalEmpWage;
     
    public Employee(String company_name, int totalWorkDays, int maxHrsPMonth, int empRatePHr) {
@@ -21,15 +18,11 @@ public class Employee {
 	}
 
    public int computeEmpWage() {
-
-      /*Temporary Variables */
       int empHrs = 0;
       int empWage = 0;
-      
       int totalEmpHrs = 0;
       int numOfDays = 0;
 
-      /* Finding employee is present or absent */
       while (totalEmpHrs <= maxHrsPMonth && numOfDays < totalWorkDays ) {
          numOfDays++;
          int empCheck = (int) Math.floor(Math.random()*3);
@@ -43,10 +36,8 @@ public class Employee {
             default:
                empHrs = 0;
             }
-      /* Calculate employee total wage */
          totalEmpHrs += empHrs;
-         
-      }
+        }
       totalEmpWage = totalEmpHrs * empRatePHr;
       return totalEmpWage;
    }
